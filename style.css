@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  background: #19171c;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}
+
+nav {
+  height: 50px;
+  background: palevioletred;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  width: 15%;
+  border-right: 1px whitesmoke solid;
+}
+
+article {
+  width: 85%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
