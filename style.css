@@ -6,23 +6,83 @@ body {
   grid-template-rows: 50px 1fr;
 }
 
+a {
+  text-decoration: none;
+  color: #111111;
+}
+
+input {
+  padding: 0;
+  border: 0;
+}
+
 nav {
   height: 50px;
-  background: palevioletred;
+  background: #7FDBFF;
+  display: flex;
 }
+
+  .nav__left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+    .nav__img {
+      background: url(./images/icon-twitch.png);
+      margin: auto 10px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav__link {
+      text-align: center;
+      width: 50px;
+      line-height: 30px;
+      color: rgba(255, 65, 54, .5);
+    }
+
+    .link--active {
+      color: #FF4136;
+      border-bottom: 5px solid #FF4136;
+    }
+
+    .nav__link:hover {
+      color: #FF4136;
+    }
+
+    .nav__search {
+      padding: 5px;
+      margin: auto 10px;
+      display: flex;
+      background: #19171c;
+    }
+
+    .search__img {
+      background: url(./images/icon-search.png);
+      filter: invert(100%);
+      background-size: 100%;
+      width: 32px;
+      height: 32px;
+      margin-left: 5px;
+    }
+
+  .nav__right {
+    width: 50%;
+  }
 
 main {
   display: flex;
   justify-content: space-between;
 }
 
-aside {
-  width: 15%;
-  border-right: 1px whitesmoke solid;
-}
+  aside {
+    width: 15%;
+    border-right: 1px whitesmoke solid;
+  }
 
-article {
-  width: 85%;
-  overflow: scroll;
-  overflow-x: hidden;
-}
+  article {
+    width: 85%;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
