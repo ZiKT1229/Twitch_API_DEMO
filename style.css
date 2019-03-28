@@ -3,7 +3,7 @@ body {
   background: #19171c;
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 672px;
 }
 
 a {
@@ -86,3 +86,32 @@ main {
     overflow: scroll;
     overflow-x: hidden;
   }
+
+  .films-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+    .film {
+      margin: 50px auto;
+      width: 300px;
+      height: 400px;
+    }
+
+      .film-img {
+        height: 200px;
+        background-color: palegreen;
+        
+      }
+
+      .film-data {
+        height: 100px;
+        background-color: #FF4136;
+      }
+
+        .data-img {
+          width: 100px;
+          height: 100px;
+          border-radius: 100%;
+          background-color: fuchsia;
+        }
