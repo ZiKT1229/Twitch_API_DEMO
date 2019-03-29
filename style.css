@@ -3,7 +3,7 @@ body {
   background: #19171c;
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 672px;
+  grid-template-rows: 50px calc(100vh - 50px);
 }
 
 a {
