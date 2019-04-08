@@ -16,7 +16,7 @@ function render(streams, container) {
     const { channel } = stream;
     const { logo } = channel;
     const { name } = channel;
-    const { url } = channel.url;
+    const { url } = channel;
 
     const divData = document.createElement('div');
     divData.className = 'film-data';
