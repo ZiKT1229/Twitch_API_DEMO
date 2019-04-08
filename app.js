@@ -1,14 +1,14 @@
-import {render} from './helper.js';
+import render from './helper.js';
 
 const url = 'https://api.twitch.tv/kraken/streams/';
 const clientId = 'a7wvr2seuhub9br5h63epquw6c031h';
 let game = '';
 let limit = '';
 
-const radioGame = document.getElementsByClassName("game");
-const radioNumber = document.getElementsByClassName("number");
+const radioGame = document.getElementsByClassName('game');
+const radioNumber = document.getElementsByClassName('number');
 
-const container = document.getElementsByClassName("films-container")[0];
+const container = document.getElementsByClassName('films-container')[0];
 
 const getTwitch = async () => {
   const endpoint = `${url}?client_id=${clientId}&game=${game}&limit=${limit}`;
@@ -26,15 +26,15 @@ const getTwitch = async () => {
   }
 };
 
-document.getElementsByClassName("filter")[0].addEventListener("click", () => {
-  for (let i = 0; i < radioGame.length; i++) {
+document.getElementsByClassName('filter')[0].addEventListener('click', () => {
+  for (let i = 0; i < radioGame.length; i += 1) {
     if (radioGame[i].checked) {
       game = radioGame[i].value;
-      break; 
+      break;
     }
   }
 
-  for (let i = 0; i < radioNumber.length; i++) {
+  for (let i = 0; i < radioNumber.length; i += 1) {
     if (radioNumber[i].checked) {
       limit = radioNumber[i].value;
       break;

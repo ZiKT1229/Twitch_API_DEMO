@@ -1,32 +1,32 @@
-export function render(streams, container) {
+function render(streams, container) {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
 
-  streams.forEach(stream => {
-    let sectionFilm = document.createElement("section");
-    sectionFilm.className = "film";
+  streams.forEach((stream) => {
+    const sectionFilm = document.createElement('section');
+    sectionFilm.className = 'film';
 
-    let preview = stream.preview.medium;
-    let imgPreview = document.createElement("img");
-    imgPreview.className = "film-img";
+    const preview = stream.preview.medium;
+    const imgPreview = document.createElement('img');
+    imgPreview.className = 'film-img';
     imgPreview.src = preview;
     sectionFilm.appendChild(imgPreview);
 
-    let channel = stream.channel;
-    let logo = channel.logo;
-    let name = channel.name;
-    let link = channel.url;
+    const { channel } = stream;
+    const { logo } = channel;
+    const { name } = channel;
+    const { url } = channel.url;
 
-    let divData = document.createElement("div");
-    divData.className = "film-data";
-    let imgLogo = document.createElement("img");
-    imgLogo.className = "data-img";
+    const divData = document.createElement('div');
+    divData.className = 'film-data';
+    const imgLogo = document.createElement('img');
+    imgLogo.className = 'data-img';
     imgLogo.src = logo;
-    let aName = document.createElement("a");
-    aName.className = "data-info";
+    const aName = document.createElement('a');
+    aName.className = 'data-info';
     aName.textContent = name;
-    aName.href = link;
+    aName.href = url;
 
     divData.appendChild(imgLogo);
     divData.appendChild(aName);
@@ -35,3 +35,5 @@ export function render(streams, container) {
     container.appendChild(sectionFilm);
   });
 }
+
+export { render as default };
