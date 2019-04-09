@@ -1,15 +1,29 @@
 import render from './helper.js';
 
+/**
+ * @param {String} url API's url
+ * @param {String} clientId APIKEY
+ */
 const url = 'https://api.twitch.tv/kraken/streams/';
 const clientId = 'a7wvr2seuhub9br5h63epquw6c031h';
+
+/**
+ * @param {String} game game's name
+ * @param {String} limit numbers of object
+ */
 let game = '';
 let limit = '';
 
+/**
+ * @param {document} radioGame to get the radio's value
+ * @param {document} radioNumber to get the radio's value
+ * @param {document} container to get the dom
+ */
 const radioGame = document.getElementsByClassName('game');
 const radioNumber = document.getElementsByClassName('number');
-
 const container = document.getElementsByClassName('films-container')[0];
 
+// fetch API with async function
 const getTwitch = async () => {
   const endpoint = `${url}?client_id=${clientId}&game=${game}&limit=${limit}`;
 
