@@ -11,16 +11,14 @@ const clientId = 'a7wvr2seuhub9br5h63epquw6c031h';
  * @param {String} game game's name
  * @param {String} limit numbers of object
  */
-let game = '';
-let limit = '';
+let game = 'League%20of%20Legends';
+const limit = 15;
 
 /**
- * @param {document} radioGame to get the radio's value
- * @param {document} radioNumber to get the radio's value
- * @param {document} container to get the dom
+ * @param {NodeList} gameList to get the radio's value
+ * @param {Node} container to get the dom
  */
-const radioGame = document.getElementsByClassName('game');
-const radioNumber = document.getElementsByClassName('number');
+const gameList = document.getElementsByClassName('game-list');
 const container = document.getElementsByClassName('films-container')[0];
 
 // fetch API with async function
@@ -40,20 +38,31 @@ const getTwitch = async () => {
   }
 };
 
-document.getElementsByClassName('filter')[0].addEventListener('click', () => {
-  for (let i = 0; i < radioGame.length; i += 1) {
-    if (radioGame[i].checked) {
-      game = radioGame[i].value;
-      break;
-    }
-  }
-
-  for (let i = 0; i < radioNumber.length; i += 1) {
-    if (radioNumber[i].checked) {
-      limit = radioNumber[i].value;
-      break;
-    }
-  }
-
-  getTwitch();
+// 因為是 HTMLCollection 所以使用 forEach 時要注意
+Array.from(gameList).forEach((element) => {
+  element.addEventListener('click', () => {
+    const currActive = document.getElementsByClassName('list-active')[0];
+    currActive.classList.remove('list-active');
+    element.classList.toggle('list-active');
+    game = element.title;
+    getTwitch();
+  });
 });
+
+getTwitch();
+
+/* const getTopGame = async () => {
+  const endpoint = 'https://api.twitch.tv/kraken/games/top/?client_id=a7wvr2seuhub9br5h63epquw6c031h&limit=3';
+
+  try {
+    const response = await fetch(endpoint);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+    } else {
+      throw new Error('Oh my god!');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}; */

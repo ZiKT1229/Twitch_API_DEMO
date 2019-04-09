@@ -81,6 +81,23 @@ main {
     border-right: 1px whitesmoke solid;
   }
 
+    .game-list {
+      width: 100%;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      color: white;
+    }
+
+    .game-list:hover {
+      background: rgb(60, 60, 60);
+      cursor: pointer;
+    }
+
+    .list-active {
+      background: rgb(60, 60, 60);
+    }
+
   article {
     width: 85%;
     overflow: scroll;
