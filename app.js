@@ -1,13 +1,8 @@
 import render from './helper.js';
 
 class App {
-  constructor(url, clientId, game, limit, container, gameList) {
-    this.url = url;
-    this.clientId = clientId;
-    this.game = game;
-    this.limit = limit;
-    this.container = container;
-    this.gameList = gameList;
+  constructor(initData) {
+    Object.assign(this, initData);
   }
 
   async getTwitch() {
