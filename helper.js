@@ -1,37 +1,31 @@
+const $create = (tag = 'div', attrs = {}, text = '') => {
+  const node = document.createElement(tag);
+  Object.keys(attrs).forEach((name) => {
+    node.setAttribute(name, attrs[name]);
+  });
+  node.textContent = text;
+  return node;
+};
+
 function render(streams, container) {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
 
   streams.forEach((stream) => {
-    const sectionFilm = document.createElement('section');
-    sectionFilm.className = 'film';
-
     const preview = stream.preview.medium;
-    const imgPreview = document.createElement('img');
-    imgPreview.className = 'film-img';
-    imgPreview.src = preview;
-    sectionFilm.appendChild(imgPreview);
-
     const { channel } = stream;
-    const { logo } = channel;
-    const { name } = channel;
-    const { url } = channel;
+    const { logo, name, url } = channel;
+    const sectionFilm = $create('section', { class: 'film' });
+    const imgPreview = $create('img', { class: 'film-img', src: preview });
+    const divData = $create('div', { class: 'film-data' });
+    const imgLogo = $create('img', { class: 'data-img', src: logo });
+    const aName = $create('a', { class: 'data-info', href: url }, name);
 
-    const divData = document.createElement('div');
-    divData.className = 'film-data';
-    const imgLogo = document.createElement('img');
-    imgLogo.className = 'data-img';
-    imgLogo.src = logo;
-    const aName = document.createElement('a');
-    aName.className = 'data-info';
-    aName.textContent = name;
-    aName.href = url;
-
+    sectionFilm.appendChild(imgPreview);
     divData.appendChild(imgLogo);
     divData.appendChild(aName);
     sectionFilm.appendChild(divData);
-
     container.appendChild(sectionFilm);
   });
 }
