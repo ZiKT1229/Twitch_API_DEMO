@@ -1,8 +1,15 @@
-import render from './helper.js';
-
 class App {
   constructor(initData) {
     Object.assign(this, initData);
+    Array.from(this.gameList).forEach((element) => {
+      element.addEventListener('click', () => {
+        const currActive = document.getElementsByClassName('list-active')[0];
+        currActive.classList.remove('list-active');
+        element.classList.toggle('list-active');
+        this.game = element.title;
+        this.getTwitch(this.render);
+      });
+    });
   }
 
   async getTwitch() {
@@ -12,25 +19,13 @@ class App {
       const response = await fetch(endpoint);
       if (response.ok) {
         const jsonResponse = await response.json();
-        render(jsonResponse.streams, this.container);
+        this.render(jsonResponse.streams, this.container);
       } else {
         throw new Error('Oh my god!');
       }
     } catch (error) {
       console.log(error);
     }
-  }
-
-  addEvent() {
-    Array.from(this.gameList).forEach((element) => {
-      element.addEventListener('click', () => {
-        const currActive = document.getElementsByClassName('list-active')[0];
-        currActive.classList.remove('list-active');
-        element.classList.toggle('list-active');
-        this.game = element.title;
-        this.getTwitch();
-      });
-    });
   }
 }
 
